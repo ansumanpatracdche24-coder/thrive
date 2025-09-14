@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SoulMate Design System - Mystical Dating App */
+
+@layer base {
+  :root {
+    /* Core mystical palette - all HSL */
+    --background: 284 71% 8%;
+    --background-secondary: 285 69% 12%;
+    --foreground: 0 0% 100%;
+
+    /* Mystical gradient backgrounds */
+    --gradient-primary: linear-gradient(135deg, hsl(284, 71%, 18%) 0%, hsl(285, 69%, 8%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(290, 60%, 25%) 0%, hsl(284, 71%, 12%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(265, 100%, 88%) 0%, hsl(330, 100%, 85%) 100%);
+
+    /* Accent colors */
+    --lavender: 265 100% 88%;
+    --lavender-dark: 265 60% 75%;
+    --pink: 330 100% 85%;
+    --pink-dark: 330 80% 70%;
+    --mystical-glow: 285 100% 70%;
+
+    /* Component colors */
+    --card: 284 71% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 284 71% 12%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 265 100% 88%;
+    --primary-foreground: 284 71% 8%;
+    --primary-hover: 265 80% 75%;
+
+    --secondary: 285 69% 18%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 285 69% 25%;
+
+    --muted: 285 40% 20%;
+    --muted-foreground: 265 30% 70%;
+
+    --accent: 330 100% 85%;
+    --accent-foreground: 284 71% 8%;
+    --accent-hover: 330 80% 70%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 285 40% 25%;
+    --input: 285 40% 15%;
+    --ring: 265 100% 88%;
+
+    --radius: 0.75rem;
+
+    /* Mystical effects */
+    --glow-primary: 0 0 20px hsl(var(--primary) / 0.3);
+    --glow-accent: 0 0 25px hsl(var(--accent) / 0.4);
+    --shadow-mystical: 0 10px 40px -10px hsl(285 100% 70% / 0.3);
+    --shadow-card: 0 8px 32px -8px hsl(284 71% 4% / 0.8);
+
+    /* Animations */
+    --transition-mystical: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Remove dark mode for mystical theme - we use one consistent dark theme */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    background: var(--gradient-primary);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* Mystical animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-mystical-entrance {
+    animation: mystical-entrance 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Mystical backgrounds */
+  .bg-mystical {
+    background: var(--gradient-primary);
+  }
+
+  .bg-mystical-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .bg-mystical-card {
+    background: hsl(var(--card));
+    box-shadow: var(--shadow-card);
+    border: 1px solid hsl(var(--border));
+    transition: var(--transition-mystical);
+  }
+
+  .bg-mystical-card:hover {
+    box-shadow: 0 0 30px rgba(199, 21, 133, 0.6), var(--shadow-card);
+    transform: translateY(-2px);
+  }
+
+  /* Mystical buttons and interactive elements */
+  .btn-mystical {
+    @apply relative overflow-hidden rounded-xl px-8 py-4 font-medium transition-all duration-300;
+    background: var(--gradient-accent);
+    color: hsl(var(--accent-foreground));
+    box-shadow: var(--glow-primary);
+  }
+
+  .btn-mystical:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--glow-accent);
+  }
+
+  .btn-mystical:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .btn-secondary-mystical {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-medium transition-all duration-300;
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .btn-secondary-mystical:hover {
+    background: hsl(var(--secondary-hover));
+    transform: translateY(-1px);
+  }
+
+  /* Mystical inputs */
+  .input-mystical {
+    @apply rounded-xl border border-border bg-input px-4 py-3 text-foreground placeholder:text-muted-foreground;
+    transition: var(--transition-smooth);
+  }
+
+  .input-mystical:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow: var(--glow-primary);
+  }
+
+  /* Floating doodles container */
+  .floating-doodles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .doodle {
+    position: absolute;
+    opacity: 0.1;
+    animation: float-doodle 20s linear infinite;
+  }
+
+  .doodle:nth-child(odd) {
+    animation-direction: reverse;
+  }
+
+  /* Loading spinner */
+  .mystical-spinner {
+    border: 2px solid transparent;
+    border-top: 2px solid hsl(var(--primary));
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  .shadow-mystical {
+    box-shadow: var(--shadow-mystical);
+  }
+
+  .transition-mystical {
+    transition: var(--transition-mystical);
+  }
+}
+
+/* Keyframe animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+  }
+}
+
+@keyframes mystical-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float-doodle {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
