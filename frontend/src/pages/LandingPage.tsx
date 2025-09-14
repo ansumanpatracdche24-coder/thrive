@@ -34,9 +34,6 @@ const LandingPage: React.FC = () => {
     if (profile?.name) {
       return profile.name.split(' ')[0];
     }
-    if (user?.user_metadata?.name) {
-      return user.user_metadata.name.split(' ')[0];
-    }
     if (user?.email) {
       return user.email.split('@')[0];
     }

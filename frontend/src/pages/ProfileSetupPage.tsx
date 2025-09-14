@@ -78,7 +78,8 @@ const ProfileSetupPage: React.FC = () => {
       location: formData.location || null,
       situation: formData.situation || null,
       is_active: true,
-      is_verified: false
+      is_verified: false,
+      updated_at: new Date().toISOString()
     };
 
     const { error } = await updateProfile(profileData);
@@ -94,6 +95,10 @@ const ProfileSetupPage: React.FC = () => {
         title: "Profile Created!",
         description: "Welcome to SoulMate! Your profile has been set up successfully."
       });
+      // Refresh the profile to get the latest data
+      try {
+        await refreshProfile();
+      } catch (_) {}
       navigate(previousPage);
     }
 

@@ -259,6 +259,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
 
     try {
+      console.log('Updating profile with data:', updates);
+      
       const { data, error } = await (supabase as any)
         .from('profiles')
         .update(updates)
@@ -267,12 +269,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         .single();
 
       if (error) {
+        console.error('Supabase update error:', error);
         return { error: new Error(error.message) };
       }
 
+      console.log('Profile updated successfully:', data);
       setProfile(data);
       return { error: null };
     } catch (error) {
+      console.error('Update profile catch error:', error);
       return { error: error as Error };
     }
   };

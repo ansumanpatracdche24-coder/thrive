@@ -27,7 +27,7 @@ const Dashboard: React.FC = () => {
   const { user, profile, loading } = useAuth();
 
   // Check if user has completed profile setup
-  const hasProfile = profile && profile.name && profile.age;
+  const hasProfile = profile && profile.name && profile.age && profile.gender;
 
   useEffect(() => {
     if (!loading && !user) {

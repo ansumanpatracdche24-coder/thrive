@@ -179,7 +179,7 @@ const ProfileEditPage: React.FC = () => {
         birthday: profile.birthday,
         age: profile.age,
         gender: profile.gender,
-        interests: profile.interests, // Keep as array for Supabase JSONB
+        interests: JSON.stringify(profile.interests), // Convert to JSON string for Supabase
       };
 
       console.log('Profile updates to send:', profileUpdates);
